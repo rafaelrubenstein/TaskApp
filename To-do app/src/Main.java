@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+// As of 10/20 main is sort of useless for this app, will eventually change to add more functionallity like adding a menu with all options a user would need for a task app. 
 public class Main {
 
     public static void main (String[]args){
