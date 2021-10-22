@@ -1,3 +1,7 @@
 # TaskApp
-basic task app with the ability to add, remove, search, and print tasks 
-More functionality and methods will be added. Add the ability to save and read a task list file, ability to check if a task is completed yet, change the completed method to remove than save the completed tasks 
+basic task app with the ability to add a task, remove a task, print all the tasks, print to a file as well as read the file. 
+
+main contains a simple options menu as well as a read and writing method. 
+
+The file contains a task object, a collection class for the task object which is implemented by using a List (Specifially an Array list), a Scanner class, and a Tasks.txt file to  store the data. 
+
