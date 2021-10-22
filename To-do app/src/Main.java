@@ -1,28 +1,61 @@
-import java.util.Scanner;
-// As of 10/20 main is sort of useless for this app, will eventually change to add more functionallity like adding a menu with all options a user would need for a task app. 
+import java.util.InputMismatchException;
+
 public class Main {
 
     public static void main (String[]args){
+//        initializes an empty task list
         TaskList task1 = new TaskList();
+//        reads the file
+        TaskList.readList(task1);
 
-        Scanner keyboard = new Scanner(System.in);
-        System.out.println("Enter Task Name");
-        String task = keyboard.nextLine();
-        System.out.println("enter due date");
-        String date = keyboard.nextLine();
-        task1.addItem(task,date);
+        int choice = 0;
+        do{
+            System.out.println("Options menu");
+            System.out.println("1: add a task");
+            System.out.println("2: change the due date of a task");
+            System.out.println("3: set the task as complete");
+            System.out.println("4: print all tasks");
+            System.out.println("5: exit");
+//            will tell the user they entered a letter instead of a number and then exit the program
+            try{
+            choice= EasyScanner.nextInt();
+            }catch (InputMismatchException e){
+                System.out.println("You entered a letters instead of a number");
+                break;
+            }
+            switch (choice) {
+                case 1 -> addTask(task1);
+                case 2 -> changeDate(task1);
+                case 3 -> taskComplete(task1);
+                case 4 -> task1.printList();
+                case 5 -> TaskList.writeList(task1);
+                default -> System.out.println("please enter a number one through 5");
+            }
+        }while (choice !=5);
 
-
-        System.out.println("Enter Task Name");
-        String task2 = keyboard.nextLine();
-        System.out.println("enter due date");
-        String date2 = keyboard.nextLine();
-        task1.addItem(task2,date2);
-
-        task1.printList();
-//        System.out.println("Enter Task Name");
-//        String taskcom = keyboard.nextLine();
-//        task1.taskCompleted(taskcom);
-//        task1.printList();
+    }
+//    allows user to add a task
+    static void addTask(TaskList taskListIn){
+        String task,date;
+        System.out.println("please enter a task");
+        task =EasyScanner.nextString();
+        System.out.println("please enter a due date");
+        date = EasyScanner.nextString();
+        taskListIn.addItem(task.trim(),date.trim());
+    }
+//    allows user to change the due date of the task
+    static void changeDate(TaskList taskList){
+        String task,date;
+        System.out.println("please enter the task");
+        task =EasyScanner.nextString();
+        System.out.println("Please enter the new due date");
+        date = EasyScanner.nextString();
+        taskList.getTaskInList(task.trim()).setDate(date.trim());
+    }
+//    allows the user to set the task as complete, this will remove it from the list
+    static void taskComplete(TaskList taskList){
+        System.out.println("please enter the task");
+        String task = EasyScanner.nextString();
+        taskList.taskCompleted(task.trim());
     }
 }
