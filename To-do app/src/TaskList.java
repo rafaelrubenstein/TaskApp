@@ -76,7 +76,5 @@ public class TaskList {
             System.out.println("there was an error with the file");
         }
     }
-
-
 }
 

@@ -1,5 +1,3 @@
-import java.util.InputMismatchException;
-
 public class Main {
 
     public static void main (String[]args){
@@ -8,7 +6,7 @@ public class Main {
 //        reads the file
         TaskList.readList(task1);
 
-        int choice = 0;
+        String choice;
         do{
             System.out.println("Options menu");
             System.out.println("1: add a task");
@@ -16,22 +14,17 @@ public class Main {
             System.out.println("3: set the task as complete");
             System.out.println("4: print all tasks");
             System.out.println("5: exit");
-//            will tell the user they entered a letter instead of a number and then exit the program
-            try{
-            choice= EasyScanner.nextInt();
-            }catch (InputMismatchException e){
-                System.out.println("You entered a letters instead of a number");
-                break;
-            }
+            choice= EasyScanner.nextString();
+
             switch (choice) {
-                case 1 -> addTask(task1);
-                case 2 -> changeDate(task1);
-                case 3 -> taskComplete(task1);
-                case 4 -> task1.printList();
-                case 5 -> TaskList.writeList(task1);
+                case "1" -> addTask(task1);
+                case "2" -> changeDate(task1);
+                case "3" -> taskComplete(task1);
+                case "4" -> task1.printList();
+                case "5" -> TaskList.writeList(task1);
                 default -> System.out.println("please enter a number one through 5");
             }
-        }while (choice !=5);
+        }while (!choice.equals("5"));
 
     }
 //    allows user to add a task
