@@ -180,12 +180,15 @@ public class ToDoGUI extends Application {
         }
         else // display tasks
         {
-            displayArea1.setText("Task" +  "\t" +  "due date" +  "\n");
+            String output = String.format("%-50s%-10s\n","Task","Due date");
+
+            displayArea1.setText(output);
             for(i = 1; i <=  task1.getSize(); i++ )
             {
-                displayArea1.appendText(task1.getTaskObject(i).getTask()
-                        + "\t\t"
-                        + task1.getTaskObject(i).getDate() + "\n");
+                String output2 = String.format("%-50s%-10s\n",task1.getTaskObject(i).getTask(),
+                        task1.getTaskObject(i).getDate());
+
+                displayArea1.appendText(output2);
             }
         }
     }
