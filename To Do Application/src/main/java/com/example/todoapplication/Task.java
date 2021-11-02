@@ -6,16 +6,9 @@ public class Task {
 
     private String task;
     private String date;
-    private final int Max_Size = 50;
     private boolean isDone;
     // constructor for Task object. user may only enter tasks that are less than 50 characters
     public Task (String taskIn, String dateIn){
-        while (taskIn.length() > Max_Size ){
-            System.out.println("task must be less than 50 characters");
-            Scanner keyboard = new Scanner(System.in);
-            System.out.println("Please enter a new task");
-            taskIn = keyboard.nextLine();
-        }
         task = taskIn;
         date = dateIn;
         isDone = false;
@@ -28,14 +21,8 @@ public class Task {
     public String getDate(){
         return date;
     }
-    //  method that allows user to set a task less than 50 characters, as of 10/20 commit this method is not used.
+
     public void setTask(String taskIn){
-        while (taskIn.length() > Max_Size ){
-            System.out.println("task must be less than 50 characters");
-            Scanner keyboard = new Scanner(System.in);
-            System.out.println("Please enter a new task");
-            taskIn = keyboard.nextLine();
-        }
         task =taskIn;
     }
     //    allows user to set the date of the task
